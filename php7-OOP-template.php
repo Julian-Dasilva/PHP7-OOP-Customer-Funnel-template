@@ -1,39 +1,39 @@
 <?php
 
 /**
- * 
+ *
  * @author Julian-Alecssandre Dasilva
  * @link https://github.com/Julian-Dasilva
  */
 class Customer {
 
-    public $first_name;
-    public $last_name;
-    public $email;
-    public $phone;
-    public $address1;
-    public $address2;
-    public $city;
-    public $state;
-    public $zip;
-    public $country;
-    public $ip;
-    public $aff_id;
-    public $sid;
-    public $sid2;
-    public $sid3;
-    public $products = array();
-    public $promo_code;
+    private $first_name;
+    private $last_name;
+    private $email;
+    private $phone;
+    private $address1;
+    private $address2;
+    private $city;
+    private $state;
+    private $zip;
+    private $country;
+    private $ip;
+    private $aff_id;
+    private $sid;
+    private $sid2;
+    private $sid3;
+    private $products = array();
+    private $promo_code;
     private $ccn;
-    public $dccn;
+    private $dccn;
     private $ccexp;
     private $cvv;
-    public $order_id;
-    public $customer_id;
-    public $ss_key;
-    public $order_total;
-    public $coupon;
-    public $checkoutAttempts = 0;
+    private $order_id;
+    private $customer_id;
+    private $ss_key;
+    private $order_total;
+    private $coupon;
+    private $checkoutAttempts = 0;
 
     /*
      * @param customer lead/contact parameters Name, Address, Email, Country, IP, Tracking Params
@@ -240,8 +240,8 @@ class Customer {
     }
 
     /*
-     * @param 
-     * parameter list: 
+     * @param
+     * parameter list:
      *
      * @throws \required data error when a required piece of information was not properly formatted/populated.
      *
@@ -281,7 +281,7 @@ class Customer {
      * @return \
      *
      * @functionality \Updates an order in shipstation with any changes that may have occured to an order
-     *                 Usually occurs when a customer takes an upsell at during the checkout process or when an order will 
+     *                 Usually occurs when a customer takes an upsell at during the checkout process or when an order will
      *                 be updated by a customer service rep
      */
 
@@ -453,7 +453,7 @@ class Customer {
     }
 
     /*
-     * @param 
+     * @param
      * parameter list: member variables
      *
      * @throws \required data error when a required piece of information was not properly formatted/populated.
@@ -512,7 +512,7 @@ class Customer {
     }
 
     /*
-     * @param 
+     * @param
      * parameter list: member variables
      *
      * @throws \if $allowtransaction is not returned funnel throws an error stating the customer has already claimed a trial.
@@ -562,7 +562,7 @@ class Customer {
     }
 
     /*
-     * @param 
+     * @param
      * parameter list: member variables
      *
      * @throws \required data error/malformed data
@@ -611,7 +611,7 @@ class Customer {
     }
 
     /*
-     * @param 
+     * @param
      * parameter list: member variables
      *
      * @throws \required data error/malformed data
@@ -636,7 +636,7 @@ class Customer {
     }
 
     /*
-     * @param 
+     * @param
      * parameter list: member variables
      *
      * @throws \required data error/malformed data
@@ -646,7 +646,7 @@ class Customer {
      * @functionality \Sends a paid order into the shipstation UI and also updates the order in the database with the shipstation key.
      *               Accepts a single product or multiple products for sending to shipstation.
      *               Shipstation key in database is useful for updating the order in the future when it is shipped out or when the order needs to be updated.
-     * 
+     *
      */
 
     function shipstation() {
@@ -774,7 +774,7 @@ class Customer {
      * @return \order id from the insert order function and sets the shipstation key in the object
      *
      * @functionality \Completes an order. This is what is called on the actual page and it fulfills calling the necessary function for an order.
-     * 
+     *
      */
 
     function completeOrder($status, $gateway_response) {
@@ -784,7 +784,7 @@ class Customer {
     }
 
     /*
-     * @param 
+     * @param
      * parameter list: member variables
      *
      * @throws \required data error/malformed data along with which piece of information was malformed
@@ -795,7 +795,7 @@ class Customer {
      *                This is important to not accept JUNK from affiliates running offers ESPECIALLY lead campaigns.
      *                 The briteverify api offers other verifications, but we want to avoid too much friction on the
      *                 offer funnels
-     * 
+     *
      */
 
     function verify() {
@@ -899,7 +899,7 @@ class Customer {
     }
 
     /*
-     * @param 
+     * @param
      * parameter list: coupon and product member variables
      *
      * @throws \invalid coupon error is thrown before calling set coupon if the coupon was invalid
@@ -915,14 +915,14 @@ class Customer {
     }
 
     /*
-     * @param 
+     * @param
      * parameter list: coupon and product member variables
      *
      * @throws \invalid coupon error is thrown before calling apply coupon
      *
      * @return \successful order response, or failed order response and the reason why it failed
      *
-     * @functionality \applies the set coupon to the product array. removes the previous coupon that was in the product array in case the new coupon 
+     * @functionality \applies the set coupon to the product array. removes the previous coupon that was in the product array in case the new coupon
      *                 is a larger discount unlocked on the funnel. Often times the higher coupon is unlocked if the customer attmepts to leave
      *                  and gets an exit popup enticing them to finish the order.
      */
